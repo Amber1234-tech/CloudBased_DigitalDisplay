@@ -1,0 +1,18 @@
+sudo nano /etc/systemd/system/python-start.service
+
+infile:
+[Unit]
+Description=Start the Python file
+After=network-online.target rclone-mount.service graphical-session.target
+
+[Service]
+Type=simple
+User=fortadmin
+Environment="DISPLAY=:0"
+#Environment="XDG_RUNTIME_DIR=/run/user/1000"
+WorkingDirectory=/home/fortadmin/Desktop/Pi-Kiosk-App/
+ExecStart=/usr/bin/python3 startVideo2.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

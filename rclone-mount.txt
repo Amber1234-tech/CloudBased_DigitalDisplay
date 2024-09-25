@@ -1,0 +1,16 @@
+sudo nano /etc/systemd/system/rclone-mount.service
+
+infile:
+[Unit]
+Description=Rclone OneDrive Mount
+After=network-online.target
+
+[Service]
+Type=simple
+User=fortadmin
+ExecStart=/home/fortadmin/Desktop/Pi-Kiosk-App/connectrclone.sh
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
